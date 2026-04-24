@@ -175,13 +175,62 @@ displayLibrary();
 }
 
 void viewPlaylist(void){
+    printf("\n=== Your Playlist ===\n");
 
+    /* Is Playlist Empty? */
+    if (head == NULL) {
+        printf("  (Playlist is empty)\n");
+        return;
+    }
+
+    /* Set current = head */
+    Node *current = head;
+    int i = 1;
+
+    /* While current != NULL */
+    while (current != NULL) {
+        printf("  [%d] %-25s - %-20s %.2f min\n",
+               i++, current->title, current->artist, current->duration);
+        current = current->next;   /* current = current->next */
+    }
+    printf("=====================\n");
 }
 
 void playNext(void){
+/* Is Playlist Empty? */
+    if (head == NULL) {
+        printf("\n  Playlist is empty. Add songs first!\n");
+        return;
+    }
 
+    /* temp = head */
+    Node *temp = head;
+
+    /* head = head->next */
+    head = head->next;
+
+    /* Display "Now Playing" */
+    printf("\n  >> Now Playing: \"%s\" by %s (%.2f min)\n",
+           temp->title, temp->artist, temp->duration);
+
+    /* Free temp node */
+    free(temp);
+
+    /* If head == NULL -> set tail = NULL */
+    if (head == NULL) {
+        tail = NULL;
+        printf("  (Playlist is now empty)\n");
+    }
 }
 
 void totalDuration(void){
+   float total = 0.0f;          /* Set total = 0   */
+    Node *current = head;        /* Set current = head */
 
+    while (current != NULL) {    /* While current != NULL */
+        total += current->duration;
+        current = current->next;
+    }
+
+    printf("\n  Total Playlist Duration: %.2f minutes\n", total);
 }
