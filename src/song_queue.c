@@ -86,3 +86,64 @@ void addSong(void);
 void viewPlaylist(void);
 void playNext(void);
 void totalDuration(void);
+
+
+int main(void){
+    printf("\n+==============================+\n");
+    printf("|   Music Playlist Manager     |\n");
+    printf("+==============================+\n");
+    
+    displayLibrary;
+    int choice;
+do {
+        displayMenu();
+        printf("Enter Choice: ");
+        scanf("%d", &choice);
+        getchar();
+
+        switch (choice) {
+            case 1: addSong();       break;
+            case 2: viewPlaylist();  break;
+            case 3: playNext();      break;
+            case 4: totalDuration(); break;
+            case 5:
+                printf("\nGoodbye!\n\n");
+                break;
+            default:
+                printf("\n  Invalid choice. Try again.\n");
+        }
+    } while (choice != 5);
+
+    return 0;
+}
+
+
+
+void displayLibrary(void){
+  printf("\n--- Song Library ---\n");
+    for (int i = 0; i < 10; i++) {
+        printf("  [%2d] %-25s - %s\n",
+               i + 1, library[i].title, library[i].artist);
+    }
+    printf("--------------------\n");
+}
+
+void displayMenu(void){
+
+}
+
+void addSong(void){
+
+}
+
+void viewPlaylist(void){
+
+}
+
+void playNext(void){
+
+}
+
+void totalDuration(void){
+
+}
