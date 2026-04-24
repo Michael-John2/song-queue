@@ -79,3 +79,10 @@ void playNext(){
 
     printf("Total playlist duration: %d seconds\n", total);
 }
+
+void displayLibrary(void);
+void displayMenu(void);
+void addSong(void);
+void viewPlaylist(void);
+void playNext(void);
+void totalDuration(void);
