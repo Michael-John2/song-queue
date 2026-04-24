@@ -129,11 +129,49 @@ void displayLibrary(void){
 }
 
 void displayMenu(void){
-
+printf("\n------ MENU ------\n");
+    printf("  1. Add Song\n");
+    printf("  2. View Playlist\n");
+    printf("  3. Play Next Song\n");
+    printf("  4. Show Total Duration\n");
+    printf("  5. Exit\n");
+    printf("------------------\n");
 }
 
 void addSong(void){
+displayLibrary();
+    printf("\n  Enter song number (1-10): ");
+    int num;
+    scanf("%d", &num);
+    getchar();
 
+    if (num < 1 || num > 10) {
+        printf("  Invalid number.\n");
+        return;
+    }
+
+    /* Create New Song Node */
+    Node *newNode = (Node *)malloc(sizeof(Node));
+    if (!newNode) {
+        printf("  Memory allocation failed.\n");
+        return;
+    }
+    strcpy(newNode->title,  library[num - 1].title);
+    strcpy(newNode->artist, library[num - 1].artist);
+    newNode->duration = library[num - 1].duration;
+    newNode->next = NULL;
+
+    /* Is Playlist Empty? */
+    if (head == NULL) {
+        head = newNode;   /* set head = new node */
+        tail = newNode;   
+    } else {
+        tail->next = newNode;
+        tail = newNode;
+    }
+
+    printf("\n  Song Added: \"%s\" by %s\n",
+           newNode->title, newNode->artist);
 }
 
 void viewPlaylist(void){
