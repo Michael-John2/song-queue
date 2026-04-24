@@ -150,3 +150,158 @@ void playNext(){
 
     printf("Total playlist duration: %d seconds\n", total);
 }
+
+void displayLibrary(void);
+void displayMenu(void);
+void addSong(void);
+void viewPlaylist(void);
+void playNext(void);
+void totalDuration(void);
+
+
+int main(void){
+    printf("\n+==============================+\n");
+    printf("|   Music Playlist Manager     |\n");
+    printf("+==============================+\n");
+    
+    displayLibrary;
+    int choice;
+do {
+        displayMenu();
+        printf("Enter Choice: ");
+        scanf("%d", &choice);
+        getchar();
+
+        switch (choice) {
+            case 1: addSong();       break;
+            case 2: viewPlaylist();  break;
+            case 3: playNext();      break;
+            case 4: totalDuration(); break;
+            case 5:
+                printf("\nGoodbye!\n\n");
+                break;
+            default:
+                printf("\n  Invalid choice. Try again.\n");
+        }
+    } while (choice != 5);
+
+    return 0;
+}
+
+
+
+void displayLibrary(void){
+  printf("\n--- Song Library ---\n");
+    for (int i = 0; i < 10; i++) {
+        printf("  [%2d] %-25s - %s\n",
+               i + 1, library[i].title, library[i].artist);
+    }
+    printf("--------------------\n");
+}
+
+void displayMenu(void){
+printf("\n------ MENU ------\n");
+    printf("  1. Add Song\n");
+    printf("  2. View Playlist\n");
+    printf("  3. Play Next Song\n");
+    printf("  4. Show Total Duration\n");
+    printf("  5. Exit\n");
+    printf("------------------\n");
+}
+
+void addSong(void){
+displayLibrary();
+    printf("\n  Enter song number (1-10): ");
+    int num;
+    scanf("%d", &num);
+    getchar();
+
+    if (num < 1 || num > 10) {
+        printf("  Invalid number.\n");
+        return;
+    }
+
+    /* Create New Song Node */
+    Node *newNode = (Node *)malloc(sizeof(Node));
+    if (!newNode) {
+        printf("  Memory allocation failed.\n");
+        return;
+    }
+    strcpy(newNode->title,  library[num - 1].title);
+    strcpy(newNode->artist, library[num - 1].artist);
+    newNode->duration = library[num - 1].duration;
+    newNode->next = NULL;
+
+    /* Is Playlist Empty? */
+    if (head == NULL) {
+        head = newNode;   /* set head = new node */
+        tail = newNode;   
+    } else {
+        tail->next = newNode;
+        tail = newNode;
+    }
+
+    printf("\n  Song Added: \"%s\" by %s\n",
+           newNode->title, newNode->artist);
+}
+
+void viewPlaylist(void){
+    printf("\n=== Your Playlist ===\n");
+
+    /* Is Playlist Empty? */
+    if (head == NULL) {
+        printf("  (Playlist is empty)\n");
+        return;
+    }
+
+    /* Set current = head */
+    Node *current = head;
+    int i = 1;
+
+    /* While current != NULL */
+    while (current != NULL) {
+        printf("  [%d] %-25s - %-20s %.2f min\n",
+               i++, current->title, current->artist, current->duration);
+        current = current->next;   /* current = current->next */
+    }
+    printf("=====================\n");
+}
+
+void playNext(void){
+/* Is Playlist Empty? */
+    if (head == NULL) {
+        printf("\n  Playlist is empty. Add songs first!\n");
+        return;
+    }
+
+    /* temp = head */
+    Node *temp = head;
+
+    /* head = head->next */
+    head = head->next;
+
+    /* Display "Now Playing" */
+    printf("\n  >> Now Playing: \"%s\" by %s (%.2f min)\n",
+           temp->title, temp->artist, temp->duration);
+
+    /* Free temp node */
+    free(temp);
+
+    /* If head == NULL -> set tail = NULL */
+    if (head == NULL) {
+        tail = NULL;
+        printf("  (Playlist is now empty)\n");
+    }
+}
+
+void totalDuration(void){
+   float total = 0.0f;          /* Set total = 0   */
+    Node *current = head;        /* Set current = head */
+
+    while (current != NULL) {    /* While current != NULL */
+        total += current->duration;
+        current = current->next;
+    }
+
+    printf("\n  Total Playlist Duration: %.2f minutes\n", total);
+}
