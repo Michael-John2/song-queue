@@ -17,3 +17,9 @@ April 5 12:15AM
 "currently workin on the 3 files such as c codes of header and implementation file and also main file while also arranging the files in src folder to be organized and not messy"
 New update:
 "Errors occurred on running the file, working on finding the root cause and implementing solutions to it"
+
+April 26-27
+"Fixing my visual studio as it cant run the code and forced to run MSVC Compiler error "MSB4025", while also checking my code and makin changes to it"
+
+April 27 9:06pm
+"After hours of confusion and erros, code finally worked"
