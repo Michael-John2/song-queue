@@ -16,16 +16,16 @@ typedef struct {
 } Song;
 
 Song library[10] = {
-    {"Bohemian Rhapsody",       "Queen",            5.55},
-    {"Imagine",                 "John Lennon",      3.03},
-    {"Hotel California",        "Eagles",           6.30},
-    {"Hey Jude",                "The Beatles",      7.11},
-    {"Smells Like Teen Spirit", "Nirvana",          5.01},
-    {"Billie Jean",             "Michael Jackson",  4.54},
-    {"Stairway to Heaven",      "Led Zeppelin",     8.02},
-    {"Like a Rolling Stone",    "Bob Dylan",        6.13},
-    {"I Will Always Love You",  "Whitney Houston",  4.31},
-    {"Sweet Child O' Mine",     "Guns N' Roses",    5.56}
+    {"Animals",       "Maroon 5",            3.50},
+    {"Sacrifice",                 "League of Legends, G.E.M.",      4.08},
+    {"Bring Me To Life",        "Evanescence",           3.55},
+    {"Devil Trigger",           "Casey Edwards",      6.45},
+    {"Can You Feel My Heart", "Bring Me The Horizon",          3.47},
+    {"Sexy And I Know It",             "LMFAO",  3.19},
+    {"Bismark",      "Zabaton",     5.13},
+    {"Thunderstruck",    "AC/DC",       4.52},
+    {"Pasilyo",  "Sunkissed Lola",  4.29},
+    {"Fortunate Son",     "Creedence Clearwater Revival",    2.19}
 };
 
 void displayLibrary(Song lib[], int size);
