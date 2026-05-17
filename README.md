@@ -23,3 +23,9 @@ April 26-27
 
 April 27 9:06pm
 "After hours of confusion and erros, code finally worked"
+
+May 16 9:57am
+"made changes on properties and added tasks and launch json files in order to debug"
+
+May 17 11:43pm
+"Added new functions and made a long reformatting as I noticed quite a lot of errors on it and also made changes on the old functions."
