@@ -2,24 +2,16 @@
 #include <stdlib.h>
 #include <string.h>
 
-<<<<<<< HEAD
 #define LIBRARY_SIZE 10
 
 typedef struct Node {
     char  title[100];
     char  artist[100];
     int   duration;   /* stored in total seconds */
-=======
-typedef struct Node {
-    char title[100];
-    char artist[100];
-    float duration;
->>>>>>> 99cce9e4a4dd3a69da3a9a1091b05da7008cdf52
     struct Node *next;
 } Node;
 
 typedef struct {
-<<<<<<< HEAD
     char  title[100];
     char  artist[100];
     int   duration;   /* stored in total seconds */
@@ -52,42 +44,16 @@ int readInt(int *out) {
     return sscanf(buf, "%d", out) == 1;
 }
 
-=======
-    char title[100];
-    char artist[100];
-    float duration;
-} Song;
-
-Song library[10] = {
-    {"Animals",       "Maroon 5",            3.50},
-    {"Sacrifice",                 "League of Legends, G.E.M.",      4.08},
-    {"Bring Me To Life",        "Evanescence",           3.55},
-    {"Devil Trigger",           "Casey Edwards",      6.45},
-    {"Can You Feel My Heart", "Bring Me The Horizon",          3.47},
-    {"Sexy And I Know It",             "LMFAO",  3.19},
-    {"Bismark",      "Zabaton",     5.13},
-    {"Thunderstruck",    "AC/DC",       4.52},
-    {"Pasilyo",  "Sunkissed Lola",  4.29},
-    {"Fortunate Son",     "Creedence Clearwater Revival",    2.19}
-};
-
->>>>>>> 99cce9e4a4dd3a69da3a9a1091b05da7008cdf52
 void displayLibrary(Song lib[], int size);
 void displayMenu();
 void addSong(Node **head, Node **tail, Song lib[]);
 void viewPlaylist(Node *head);
-<<<<<<< HEAD
 void removeSong(Node **head, Node **tail);
 void playNext(Node **head, Node **tail);
 void totalDuration(Node *head);
 void freePlaylist(Node **head, Node **tail);
 
 /* Sets up the playlist and runs the main menu loop */
-=======
-void playNext(Node **head, Node **tail);
-void totalDuration(Node *head);
-
->>>>>>> 99cce9e4a4dd3a69da3a9a1091b05da7008cdf52
 int main() {
     Node *head = NULL;
     Node *tail = NULL;
@@ -96,54 +62,36 @@ int main() {
     printf("|   Music Playlist Manager     |\n");
     printf("+==============================+\n");
 
-<<<<<<< HEAD
     displayLibrary(library, LIBRARY_SIZE);
-=======
-    displayLibrary(library, 10);
->>>>>>> 99cce9e4a4dd3a69da3a9a1091b05da7008cdf52
 
     int choice;
     do {
         displayMenu();
         printf("Enter Choice: ");
-<<<<<<< HEAD
         if (!readInt(&choice)) {
             printf("\n  Invalid input. Please enter a number.\n");
             choice = 0;
             continue;
         }
-=======
-        scanf("%d", &choice);
-        getchar();
->>>>>>> 99cce9e4a4dd3a69da3a9a1091b05da7008cdf52
 
         switch (choice) {
             case 1: addSong(&head, &tail, library);  break;
             case 2: viewPlaylist(head);               break;
             case 3: playNext(&head, &tail);           break;
             case 4: totalDuration(head);              break;
-<<<<<<< HEAD
             case 5: removeSong(&head, &tail);         break;
             case 6:
                 freePlaylist(&head, &tail);
-=======
-            case 5:
->>>>>>> 99cce9e4a4dd3a69da3a9a1091b05da7008cdf52
                 printf("\nGoodbye!\n\n");
                 break;
             default:
                 printf("\n  Invalid choice. Try again.\n");
         }
-<<<<<<< HEAD
     } while (choice != 6);
-=======
-    } while (choice != 5);
->>>>>>> 99cce9e4a4dd3a69da3a9a1091b05da7008cdf52
 
     return 0;
 }
 
-<<<<<<< HEAD
 /* Prints all songs in the library with their index and duration */
 void displayLibrary(Song lib[], int size) {
     printf("\n--- Song Library ---\n");
@@ -152,27 +100,17 @@ void displayLibrary(Song lib[], int size) {
         formatDuration(lib[i].duration, dur);
         printf("  [%2d] %-30s - %-35s %s\n",
                i + 1, lib[i].title, lib[i].artist, dur);
-=======
-void displayLibrary(Song lib[], int size) {
-    printf("\n--- Song Library ---\n");
-    for (int i = 0; i < size; i++) {
-        printf("  [%2d] %-30s - %s\n", i + 1, lib[i].title, lib[i].artist);
->>>>>>> 99cce9e4a4dd3a69da3a9a1091b05da7008cdf52
     }
     printf("--------------------\n");
 }
 
-<<<<<<< HEAD
 /* Prints the menu options */
-=======
->>>>>>> 99cce9e4a4dd3a69da3a9a1091b05da7008cdf52
 void displayMenu() {
     printf("\n------ MENU ------\n");
     printf("  1. Add Song\n");
     printf("  2. View Playlist\n");
     printf("  3. Play Next Song\n");
     printf("  4. Show Total Duration\n");
-<<<<<<< HEAD
     printf("  5. Remove a Song\n");
     printf("  6. Exit\n");
     printf("------------------\n");
@@ -185,25 +123,10 @@ void addSong(Node **head, Node **tail, Song lib[]) {
 
     int num;
     if (!readInt(&num) || num < 1 || num > LIBRARY_SIZE) {
-=======
-    printf("  5. Exit\n");
-    printf("------------------\n");
-}
-
-void addSong(Node **head, Node **tail, Song lib[]) {
-    displayLibrary(lib, 10);
-    printf("\n  Enter song number (1-10): ");
-    int num;
-    scanf("%d", &num);
-    getchar();
-
-    if (num < 1 || num > 10) {
->>>>>>> 99cce9e4a4dd3a69da3a9a1091b05da7008cdf52
         printf("  Invalid number.\n");
         return;
     }
 
-<<<<<<< HEAD
     /* Reject if the song is already queued */
     Node *cur = *head;
     while (cur) {
@@ -214,8 +137,6 @@ void addSong(Node **head, Node **tail, Song lib[]) {
         cur = cur->next;
     }
 
-=======
->>>>>>> 99cce9e4a4dd3a69da3a9a1091b05da7008cdf52
     Node *newNode = (Node *)malloc(sizeof(Node));
     if (!newNode) {
         printf("  Memory allocation failed.\n");
@@ -225,20 +146,14 @@ void addSong(Node **head, Node **tail, Song lib[]) {
     strcpy(newNode->title,  lib[num - 1].title);
     strcpy(newNode->artist, lib[num - 1].artist);
     newNode->duration = lib[num - 1].duration;
-<<<<<<< HEAD
     newNode->next     = NULL;
 
     /* Link to end; if list was empty, also set head */
-=======
-    newNode->next = NULL;
-
->>>>>>> 99cce9e4a4dd3a69da3a9a1091b05da7008cdf52
     if (*head == NULL) {
         *head = newNode;
         *tail = newNode;
     } else {
         (*tail)->next = newNode;
-<<<<<<< HEAD
         *tail         = newNode;
     }
 
@@ -249,14 +164,6 @@ void addSong(Node **head, Node **tail, Song lib[]) {
 }
 
 /* Traverses and prints every song currently in the playlist */
-=======
-        *tail = newNode;
-    }
-
-    printf("\n  Song Added: \"%s\" by %s\n", newNode->title, newNode->artist);
-}
-
->>>>>>> 99cce9e4a4dd3a69da3a9a1091b05da7008cdf52
 void viewPlaylist(Node *head) {
     printf("\n=== Your Playlist ===\n");
 
@@ -266,25 +173,17 @@ void viewPlaylist(Node *head) {
     }
 
     Node *current = head;
-<<<<<<< HEAD
     int   i       = 1;
     while (current != NULL) {
         char dur[32];
         formatDuration(current->duration, dur);
         printf("  [%d] %-30s - %-35s %s\n",
                i++, current->title, current->artist, dur);
-=======
-    int i = 1;
-    while (current != NULL) {
-        printf("  [%d] %-30s - %-20s %.2f min\n",
-               i++, current->title, current->artist, current->duration);
->>>>>>> 99cce9e4a4dd3a69da3a9a1091b05da7008cdf52
         current = current->next;
     }
     printf("=====================\n");
 }
 
-<<<<<<< HEAD
 /* Removes a song at a chosen position by re-linking the surrounding nodes */
 void removeSong(Node **head, Node **tail) {
     if (*head == NULL) {
@@ -330,8 +229,6 @@ void removeSong(Node **head, Node **tail) {
 }
 
 /* Plays and removes the first song in the queue (FIFO order) */
-=======
->>>>>>> 99cce9e4a4dd3a69da3a9a1091b05da7008cdf52
 void playNext(Node **head, Node **tail) {
     if (*head == NULL) {
         printf("\n  Playlist is empty. Add songs first!\n");
@@ -339,19 +236,12 @@ void playNext(Node **head, Node **tail) {
     }
 
     Node *temp = *head;
-<<<<<<< HEAD
     *head      = (*head)->next;
 
     char dur[32];
     formatDuration(temp->duration, dur);
     printf("\n  >> Now Playing: \"%s\" by %s (%s)\n",
            temp->title, temp->artist, dur);
-=======
-    *head = (*head)->next;
-
-    printf("\n  >> Now Playing: \"%s\" by %s (%.2f min)\n",
-           temp->title, temp->artist, temp->duration);
->>>>>>> 99cce9e4a4dd3a69da3a9a1091b05da7008cdf52
 
     free(temp);
 
@@ -361,17 +251,13 @@ void playNext(Node **head, Node **tail) {
     }
 }
 
-<<<<<<< HEAD
 /* Adds up all song durations and prints the total */
-=======
->>>>>>> 99cce9e4a4dd3a69da3a9a1091b05da7008cdf52
 void totalDuration(Node *head) {
     if (head == NULL) {
         printf("\n  Playlist is empty.\n");
         return;
     }
 
-<<<<<<< HEAD
     int   total   = 0;
     Node *current = head;
     while (current != NULL) {
@@ -394,14 +280,4 @@ void freePlaylist(Node **head, Node **tail) {
     }
     *head = NULL;
     *tail = NULL;
-=======
-    float total = 0;
-    Node *current = head;
-    while (current != NULL) {
-        total += current->duration;
-        current = current->next;
-    }
-
-    printf("\n  Total Playlist Duration: %.2f minutes\n", total);
->>>>>>> 99cce9e4a4dd3a69da3a9a1091b05da7008cdf52
 }
