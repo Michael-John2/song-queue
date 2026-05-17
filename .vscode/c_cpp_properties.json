@@ -4,17 +4,28 @@
       "name": "Win32",
       "includePath": [
         "${workspaceFolder}/**",
+<<<<<<< HEAD
         "C:\\msys64\\mingw64\\include",
         "C:\\msys64\\mingw64\\lib\\gcc\\x86_64-w64-mingw32\\**"
+=======
+        "C:/msys64/mingw64/include"
+>>>>>>> 99cce9e4a4dd3a69da3a9a1091b05da7008cdf52
       ],
       "defines": [
         "_DEBUG",
         "UNICODE",
         "_UNICODE"
       ],
+<<<<<<< HEAD
       "compilerPath": "C:\\msys64\\mingw64\\bin\\gcc.exe",
       "cStandard": "c17",
       "intelliSenseMode": "windows-gcc-x64"
+=======
+      "cStandard": "c17",
+      "cppStandard": "c++17",
+      "intelliSenseMode": "windows-gcc-x64",
+      "compilerPath": "C:/msys64/mingw64/bin/gcc.exe"
+>>>>>>> 99cce9e4a4dd3a69da3a9a1091b05da7008cdf52
     }
   ],
   "version": 4
